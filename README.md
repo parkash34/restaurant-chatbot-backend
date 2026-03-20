@@ -1,6 +1,11 @@
 # 🍕 Restaurant Chatbot Backend
 
-A lightweight AI-powered chatbot backend for an Italian restaurant — built with FastAPI and Groq's LLaMA 3.3 model. Handles menu questions, reservations, and opening hours with per-session memory.
+A FastAPI backend that powers an AI chatbot for an Italian restaurant.
+Built on top of Groq's LLaMA 3.3 70B model — it answers questions about the menu,
+reservations, and opening hours. Nothing else.
+
+Each conversation is tracked by a session ID, so the bot remembers context
+across messages without needing a database.
 
 ---
 
@@ -25,11 +30,14 @@ cd restaurant-chatbot-backend
 
 ### 2. Install dependencies
 ```bash
-pip install fastapi python-dotenv requests uvicorn
+pip install -r requirements.txt
 ```
 
 ### 3. Set up environment
-Create a `.env` file in the root:
+```bash
+cp .env.example .env
+```
+Then open `.env` and add your Groq API key:
 ```
 API_KEY=your_groq_api_key_here
 ```
@@ -62,7 +70,7 @@ Server runs at `http://localhost:8000`
 }
 ```
 
-> Each `session_id` maintains its own conversation history, so the bot remembers context across messages in the same session.
+> Each `session_id` keeps its own chat history, so the bot stays in context across messages.
 
 ---
 
@@ -70,25 +78,16 @@ Server runs at `http://localhost:8000`
 
 ```
 restaurant-chatbot-backend/
-├── main.py        # FastAPI app, routes, and AI logic
-├── .env           # API key (never commit this)
-└── .gitignore     # Make sure .env is listed here
+├── main.py            # FastAPI app, routes, and AI logic
+├── requirements.txt   # Python dependencies
+├── .env               # Your API key (never commit this)
+├── .env.example       # Template for environment variables
+├── .gitignore         # Ignores .env and pycache
+└── README.md
 ```
-
----
-
-## ⚠️ Important
-
-Make sure your `.gitignore` includes:
-```
-.env
-__pycache__/
-```
-
-Never push your API key to GitHub.
 
 ---
 
 ## 👤 Author
 
-**Om Parkash** — [LinkedIn](https://www.linkedin.com/in/om-parkash-a93a87275) · [GitHub](https://github.com/parkash34)
+**Om Parkash** — [LinkedIn](https://www.linkedin.com/in/om-parkash34) · [GitHub](https://github.com/parkash34)
