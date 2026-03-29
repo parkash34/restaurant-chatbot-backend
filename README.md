@@ -33,7 +33,7 @@ cd restaurant-chatbot-backend
 pip install -r requirements.txt
 ```
 
-### 3. Set up environment
+### 3. Set up the environment
 ```bash
 cp .env.example .env
 ```
@@ -66,7 +66,7 @@ Server runs at `http://localhost:8000`
 **Response:**
 ```json
 {
-  "reply": "We are open Monday to Sunday, 11am to 10pm!"
+  "reply": "We are open Monday to Sunday, 11 am to 10 pm!"
 }
 ```
 
